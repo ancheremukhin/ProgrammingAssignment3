@@ -24,5 +24,4 @@ mean_std_dt[,"activity"] <- sapply(labels$V1, function(i) { activities$V2[i] })
 mean_std_dt[,"subject"] <- subject
 # produce new tidy data set
 
-sapply(seq(1,66), function (i){  tapply(mean_std_dt[,i], mean_std_dt$"activity", mean) })
-sapply(seq(1,66), function (i){  tapply(mean_std_dt[,i], mean_std_dt$"subject", mean) })
+aggregate(. ~ activity + subject, data = mean_std_dt, mean)
